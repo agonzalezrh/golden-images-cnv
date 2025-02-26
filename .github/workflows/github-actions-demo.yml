@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Check ${{ github.actor }}.json exists
         run: |
-          |
           if [ ! -f "${{ github.actor }}.json" ]; then
             echo "Error: File ${{ github.actor }}.json not exist!"
             exit 1
