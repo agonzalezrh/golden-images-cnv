@@ -1,0 +1,38 @@
+{
+  "client_id": "ui",
+  "customizations": {
+    "locale": {
+      "keyboard": "es",
+      "languages": [
+        "gl_ES.UTF-8"
+      ]
+    },
+    "packages": [
+      "vim-enhanced"
+    ],
+    "subscription": {
+      "activation-key": "activation-key-default-w4uv8o",
+      "base-url": "https://cdn.redhat.com/",
+      "insights": true,
+      "organization": 15324659,
+      "rhc": true,
+      "server-url": "subscription.rhsm.redhat.com"
+    },
+    "timezone": {
+      "timezone": "Africa/Algiers"
+    }
+  },
+  "distribution": "rhel-9",
+  "image_description": "",
+  "image_name": "rhel-9-x86_64-02252025-2333",
+  "image_requests": [
+    {
+      "architecture": "x86_64",
+      "image_type": "guest-image",
+      "upload_request": {
+        "options": {},
+        "type": "aws.s3"
+      }
+    }
+  ]
+}
