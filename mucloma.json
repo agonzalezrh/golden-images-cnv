@@ -1,0 +1,25 @@
+{
+  "client_id": "ui",
+  "customizations": {
+    "packages": [
+      "vim-enhanced",
+      "lshw"
+    ],
+    "timezone": {
+      "timezone": "Europe/Berlin"
+    }
+  },
+  "distribution": "centos-9",
+  "image_description": "",
+  "image_name": "centos-9-x86_64",
+  "image_requests": [
+    {
+      "architecture": "x86_64",
+      "image_type": "guest-image",
+      "upload_request": {
+        "options": {},
+        "type": "aws.s3"
+      }
+    }
+  ]
+}
