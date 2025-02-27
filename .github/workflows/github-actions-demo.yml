@@ -30,6 +30,13 @@ jobs:
           containerfiles: |-
             Containerfile
 
+      - name: Login to Image Registry
+        uses: docker/login-action@v1
+        with:
+          registry: "quay.io"
+          username: ${{ secrets.QUAY_RHPDS_POC_PASSWORD }}
+          password: ${{ secrets.QUAY_RHPDS_POC_PASSWORD }}
+
       - name: Push To quay.io
         id: push-to-quay
         uses: redhat-actions/push-to-registry@v2
