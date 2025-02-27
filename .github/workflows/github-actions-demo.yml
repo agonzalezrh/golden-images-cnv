@@ -31,7 +31,7 @@ jobs:
         id: build-image
         with:
           image: "poc-image-builder-cnv"
-          tags: $imagename
+          tags: ${{ steps.get-image-name.outputs.imagename }}
           labels: ${{ inputs.labels }}
           containerfiles: |-
             Containerfile
