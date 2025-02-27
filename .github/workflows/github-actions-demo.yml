@@ -23,7 +23,7 @@ jobs:
       - name: Get image name from json
         id: get-image-name
         run: |
-          IMAGENAME=$(jq -r ".image_name" ${GITHUB_WORKSPACE}/${{ github.actor }}.json)
+          IMAGENAME=$(jq -r ".image_name" ${GITHUB_WORKSPACE}/${{ github.actor }}.json)-${{ github.actor }}
           echo "imagename=$IMAGENAME" >> "$GITHUB_OUTPUT"
 
       - name: Buildah Action
