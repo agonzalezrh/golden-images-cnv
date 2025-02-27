@@ -25,8 +25,14 @@ output=$( \
       --data @${BLUEPRINT} \
       https://console.redhat.com/api/image-builder/v1/compose)
 
-echo $output
 compose_id=$( echo $output    | jq -r .id)
+
+if [ "$compose_id" == "null" ]; then
+  echo "Something went wrong. Output request: "
+  echo $output
+  exit 1
+fi
+
 status=$( curl \
     --silent \
     --header "Authorization: Bearer $access_token" \
@@ -45,12 +51,23 @@ status=$( curl \
     --header "Authorization: Bearer $access_token" \
     "https://console.redhat.com/api/image-builder/v1/composes/$compose_id" \
   | jq -r ".image_status.status")
+if [ "$status" == "null" ]; then
+# It requires get a new token
+access_token=$( \
+    curl --silent \
+      --request POST \
+      --data grant_type=refresh_token \
+      --data client_id=rhsm-api \
+      --data refresh_token=$OFFLINE_TOKEN \
+      https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
+    | jq -r .access_token \
+)
+else
 attempt_num=$(( attempt_num + 1 ))
+fi
+
+
 echo "Current status: $status"
-curl \
-    --silent \
-    --header "Authorization: Bearer $access_token" \
-    "https://console.redhat.com/api/image-builder/v1/composes/$compose_id"
 done
 
 if [ "$status" != "success" ]; then
