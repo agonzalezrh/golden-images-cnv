@@ -24,7 +24,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         id: build-image
         with:
-          image: ${{ github.actor }}
+          image: "poc-image-builder-cnv"
           tags: ${{inputs.tag}} ${{ github.sha }} latest
           labels: ${{ inputs.labels }}
           containerfiles: |-
