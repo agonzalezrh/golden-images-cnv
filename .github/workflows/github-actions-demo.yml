@@ -20,12 +20,18 @@ jobs:
       - name: Run build_image.sh ${{ github.actor }}
         run: OFFLINE_TOKEN=${{ secrets.OFFLINE_TOKEN }} bash ${GITHUB_WORKSPACE}/build_image.sh ${GITHUB_WORKSPACE}/${{ github.actor }}.json
 
+      - name: Get image name from json
+        id: get-image-name
+        run: |
+          IMAGENAME=$(jq -r ".image_name" ${GITHUB_WORKSPACE}/${{ github.actor }}.json)
+          echo "imagename=$IMAGENAME" >> "$GITHUB_ENV"
+
       - name: Buildah Action
         uses: redhat-actions/buildah-build@v2
         id: build-image
         with:
           image: "poc-image-builder-cnv"
-          tags: ${{inputs.tag}} ${{ github.sha }} latest
+          tags: $imagename
           labels: ${{ inputs.labels }}
           containerfiles: |-
             Containerfile
