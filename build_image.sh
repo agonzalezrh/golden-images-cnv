@@ -17,15 +17,16 @@ access_token=$( \
 )
 
 echo "Start building image using Image Builder"
-compose_id=$( \
+output=$( \
     curl --silent \
       --request POST \
       --header "Authorization: Bearer $access_token" \
       --header "Content-Type: application/json" \
       --data @${BLUEPRINT} \
-      https://console.redhat.com/api/image-builder/v1/compose \
-    | jq -r .id
-)
+      https://console.redhat.com/api/image-builder/v1/compose)
+
+echo $output
+compose_id=$( echo $output    | jq -r .id)
 status=$( curl \
     --silent \
     --header "Authorization: Bearer $access_token" \
