@@ -34,7 +34,7 @@ status=$( curl \
 
 echo "Loop checking the status. Maximum 30 minutes"
 
-max_attempts=5
+max_attempts=30
 attempt_num=1
 
 while [ "$status" != "success" ] && [ $attempt_num -le $max_attempts ]; do
