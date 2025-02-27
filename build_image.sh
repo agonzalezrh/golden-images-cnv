@@ -37,7 +37,7 @@ echo "Loop checking the status. Maximum 30 minutes"
 max_attempts=5
 attempt_num=1
 
-while [ "$status" != "success" && [ $attempt_num -le $max_attempts ]; do
+while [ "$status" != "success" ] && [ $attempt_num -le $max_attempts ]; do
 sleep 60
 status=$( curl \
     --silent \
