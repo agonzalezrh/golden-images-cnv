@@ -24,7 +24,7 @@ jobs:
         id: get-image-name
         run: |
           IMAGENAME=$(jq -r ".image_name" ${GITHUB_WORKSPACE}/${{ github.actor }}.json)
-          echo "imagename=$IMAGENAME" >> "$GITHUB_ENV"
+          echo "imagename=$IMAGENAME" >> "$GITHUB_OUTPUT"
 
       - name: Buildah Action
         uses: redhat-actions/buildah-build@v2
