@@ -1,6 +1,8 @@
 name: Build VM images
 run-name: Build VM image for user ${{ github.actor }}
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, reopened]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
