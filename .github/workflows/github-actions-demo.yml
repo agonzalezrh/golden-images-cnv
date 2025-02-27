@@ -18,7 +18,7 @@ jobs:
           fi
 
       - name: Run build_image.sh {{ github.actor }}
-        run: sh build_image.sh {{ github.actor }}
+        run: OFFLINE_TOKEN=${{ secrets.OFFLINE_TOKEN }} sh build_image.sh {{ github.actor }}
 
       - name: Buildah Action
         uses: redhat-actions/buildah-build@v2
