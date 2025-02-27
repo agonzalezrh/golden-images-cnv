@@ -44,7 +44,8 @@ status=$( curl \
     --header "Authorization: Bearer $access_token" \
     "https://console.redhat.com/api/image-builder/v1/composes/$compose_id" \
   | jq -r ".image_status.status")
-  attempt_num=$(( attempt_num + 1 ))
+attempt_num=$(( attempt_num + 1 ))
+echo "Current status: $status"
 done
 
 if [ "$status" != "success" ]; then
