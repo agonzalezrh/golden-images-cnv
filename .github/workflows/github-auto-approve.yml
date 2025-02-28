@@ -1,7 +1,7 @@
 name: Automatic Workflow Approval
 on:
   workflow_run:
-    workflows: ["github-actions-demo.yml"]  # Change this to your workflow filename
+    workflows: ["github-actions-demo.yml"]  # Change this to your actual workflow file
     types:
       - requested
 
@@ -9,8 +9,10 @@ jobs:
   approve-workflow:
     name: Approve Workflow Run
     runs-on: ubuntu-latest
+    permissions:
+      actions: write  # Needed to approve workflows
     steps:
       - name: Approve Workflow
-        uses: hmarr/auto-approve-action@v3
+        uses: actions/approve-workflow-runs@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }
+          github-token: ${{ secrets.GITHUB_TOKEN }}
