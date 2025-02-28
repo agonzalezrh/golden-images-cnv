@@ -1,14 +1,14 @@
-name: Automatic Approve
+name: Automatic Approve for PR Workflows
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  pull_request_target:
+    types: [opened]
+
 jobs:
   automatic-approve:
     name: Automatic Approve
     runs-on: ubuntu-latest
     steps:
-      - name: Automatic Approve
-        uses: mheap/automatic-approve-action@v1
+      - name: Approve PR Workflow
+        uses: hmarr/auto-approve-action@v3
         with:
-          token: ${{ secrets.PAT }}
-          workflows: "github-actions-demo.yml"
+          github-token: ${{ secrets.PAT }}
