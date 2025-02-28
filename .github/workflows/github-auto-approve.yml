@@ -1,7 +1,7 @@
 name: Automatic Workflow Approval
 on:
   workflow_run:
-    workflows: ["YOUR_WORKFLOW_NAME.yml"]  # Change this to your workflow filename
+    workflows: ["github-actions-demo.yml"]  # Change this to your workflow filename
     types:
       - requested
 
