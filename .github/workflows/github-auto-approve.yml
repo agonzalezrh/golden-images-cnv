@@ -1,14 +1,16 @@
-name: Automatic Approve for PR Workflows
+name: Automatic Workflow Approval
 on:
-  pull_request_target:
-    types: [opened]
+  workflow_run:
+    workflows: ["YOUR_WORKFLOW_NAME.yml"]  # Change this to your workflow filename
+    types:
+      - requested
 
 jobs:
-  automatic-approve:
-    name: Automatic Approve
+  approve-workflow:
+    name: Approve Workflow Run
     runs-on: ubuntu-latest
     steps:
-      - name: Approve PR Workflow
+      - name: Approve Workflow
         uses: hmarr/auto-approve-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }
