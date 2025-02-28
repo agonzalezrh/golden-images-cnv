@@ -19,14 +19,14 @@ jobs:
           while [ $SECONDS -lt $end ]; do
             run_id=$(gh api repos/${{ github.repository }}/actions/runs \
                       --method GET \
-                      --header "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+                      --header "Authorization: token ${{ secrets.PAT }}" \
                       --jq '.workflow_runs[] | select(.status=="waiting") | .id' | head -n 1)
 
             if [ -n "$run_id" ]; then
               echo "Found pending workflow: $run_id. Approving..."
               gh api repos/${{ github.repository }}/actions/runs/$run_id/approve \
                 --method POST \
-                --header "Authorization: token ${{ secrets.PAT_TOKEN }}"
+                --header "Authorization: token ${{ secrets.PAT }}"
               echo "Workflow $run_id approved!"
               exit 0
             fi
