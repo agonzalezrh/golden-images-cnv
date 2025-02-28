@@ -11,4 +11,4 @@ jobs:
       - name: Approve PR Workflow
         uses: hmarr/auto-approve-action@v3
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
