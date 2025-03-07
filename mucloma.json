@@ -1,0 +1,47 @@
+{
+  "client_id": "ui",
+  "customizations": {
+    "files": [
+      {
+        "data": "W1VuaXRdCkRlc2NyaXB0aW9uPUN1c3RvbSBmaXJzdCBib290IHNjcmlwdApDb25kaXRpb25GaWxlSXNFeGVjdXRhYmxlPS91c3IvbG9jYWwvc2Jpbi9jdXN0b20tZmlyc3QtYm9vdApDb25kaXRpb25QYXRoRXhpc3RzPSEvdmFyL2xvY2FsLy5jdXN0b20tZmlyc3QtYm9vdC1kb25lCldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldApBZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXQKQWZ0ZXI9b3NidWlsZC1maXJzdC1ib290LnNlcnZpY2UKCltTZXJ2aWNlXQpUeXBlPW9uZXNob3QKRXhlY1N0YXJ0PS91c3IvbG9jYWwvc2Jpbi9jdXN0b20tZmlyc3QtYm9vdApFeGVjU3RhcnRQb3N0PS91c3IvYmluL3RvdWNoIC92YXIvbG9jYWwvLmN1c3RvbS1maXJzdC1ib290LWRvbmUKUmVtYWluQWZ0ZXJFeGl0PXllcwoKW0luc3RhbGxdCldhbnRlZEJ5PWJhc2ljLnRhcmdldApXYW50ZWRCeT1tdWx0aS11c2VyLnRhcmdldApXYW50ZWRCeT1ncmFwaGljYWwudGFyZ2V0Cg==",
+        "data_encoding": "base64",
+        "ensure_parents": true,
+        "path": "/etc/systemd/system/custom-first-boot.service"
+      },
+      {
+        "data": "IyEvYmluL2Jhc2gKCmVjaG8gIldlbGNvbWUgdG8gbXkgY3VzdG9tIGltYWdlIiA+IC9ldGMvbW90ZA==",
+        "data_encoding": "base64",
+        "ensure_parents": true,
+        "mode": "0774",
+        "path": "/usr/local/sbin/custom-first-boot"
+      }
+    ],
+    "packages": [
+      "vim-enhanced",
+      "lshw",
+      "git"
+    ],
+    "timezone": {
+      "timezone": "Europe/Berlin"
+    },
+    "locale": {
+      "keyboard": "us",
+      "languages": [
+        "es_US.UTF-8"
+      ]
+    }
+  },
+  "distribution": "centos-9",
+  "image_description": "",
+  "image_name": "centos-9-x86_64",
+  "image_requests": [
+    {
+      "architecture": "x86_64",
+      "image_type": "guest-image",
+      "upload_request": {
+        "options": {},
+        "type": "aws.s3"
+      }
+    }
+  ]
+}
