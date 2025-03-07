@@ -18,7 +18,8 @@
     ],
     "packages": [
       "vim-enhanced",
-      "lshw"
+      "lshw",
+      "git"
     ],
     "timezone": {
       "timezone": "Europe/Berlin"
